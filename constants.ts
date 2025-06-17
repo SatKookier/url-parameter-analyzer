@@ -1,4 +1,3 @@
-
 export const PARAMETER_EXPLANATIONS: { [key: string]: string } = {
   utm_source: "The referrer: where the traffic came from (e.g., google, newsletter).",
   utm_medium: "The marketing medium (e.g., cpc, email, social).",
@@ -12,7 +11,7 @@ export const PARAMETER_EXPLANATIONS: { [key: string]: string } = {
   _ga: "Google Analytics client ID.",
   _gl: "Google Analytics linker parameter.",
   cid: "Campaign ID, often used in email marketing.",
-  ID: "Generic identifier, could be session ID, user ID etc.",
+  id: "Generic identifier, could be session ID, user ID etc.",
   source: "Indicates the source of traffic, similar to utm_source.",
   medium: "Indicates the marketing medium, similar to utm_medium.",
   campaign: "Indicates the campaign name, similar to utm_campaign.",

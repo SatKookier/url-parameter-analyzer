@@ -6,6 +6,54 @@ import PrivacyPolicy from './pages/PrivacyPolicy';
 import Contact from './pages/Contact';
 import ClipboardIcon from './components/icons/ClipboardIcon';
 
+// Dictionary of common URL parameters and their explanations
+const parameterDictionary: Record<string, string> = {
+  // --- Google Analytics (UTM) ---
+  'utm_source': 'The referrer or source of the traffic (e.g., google, newsletter, facebook).',
+  'utm_medium': 'The marketing medium (e.g., cpc, email, social).',
+  'utm_campaign': 'The specific product promotion or strategic campaign (e.g., summer_sale).',
+  'utm_term': 'The keywords used for a paid search campaign.',
+  'utm_content': 'Used to differentiate ads or links that point to the same URL (e.g., logolink, textlink).',
+
+  // --- Paid Advertising ---
+  'gclid': 'Google Click Identifier. A tracking parameter for Google Ads clicks.',
+  'gclsrc': 'Indicates the source of the gclid, typically "aw.ds" for Google Ads.',
+  'dclid': 'DoubleClick Click Identifier. A tracking parameter for the Google Display Network.',
+  'msclkid': 'Microsoft Click Identifier. A tracking parameter for Microsoft (Bing) Advertising.',
+  'fbclid': 'Facebook Click Identifier. A tracking parameter for Facebook Ads.',
+  'twclid': 'Twitter Click Identifier. A tracking parameter for X (Twitter) Ads.',
+  'ttclid': 'TikTok Click Identifier. A tracking parameter for TikTok Ads.',
+  'li_fat_id': 'LinkedIn Follow Ad ID. A tracking parameter for LinkedIn Ads.',
+  'yclid': 'Yahoo! Click Identifier. A tracking parameter for Yahoo! Japan Ads.',
+
+  // --- Social Media & Referrals ---
+  'ref': 'A common parameter indicating the referral source (e.g., ref=producthunt).',
+  'source': 'Another common parameter indicating the traffic source.',
+  'via': 'Indicates the user or channel through which the content was shared.',
+  'igshid': 'Instagram Share ID. Tracks sharing of content within Instagram Stories.',
+
+  // --- SEO & Site Search ---
+  'q': 'Query. The search query a user entered.',
+  'query': 'Query. A more descriptive version of "q".',
+  's': 'Search. Another common parameter for a user\'s search term.',
+  'keyword': 'The keyword used in a search.',
+
+  // --- Affiliate Marketing ---
+  'aff_id': 'Affiliate ID. Identifies the affiliate partner.',
+  'affiliate_id': 'A more descriptive version of aff_id.',
+  'sub_id': 'Sub-identifier used by affiliates for their own internal tracking.',
+  'click_id': 'A unique ID for tracking a specific click in an affiliate campaign.',
+  'partner_id': 'Identifies the distribution partner.',
+
+  // --- General Site Functionality ---
+  'id': 'A generic identifier for an item, such as a product or article ID.',
+  'product_id': 'Specifically identifies a product.',
+  'user_id': 'Specifically identifies a user.',
+  'session_id': 'Identifies the current user session.',
+  'lang': 'Language. Specifies the language of the content (e.g., en, ja).',
+  'hl': 'Host Language. Another common parameter for specifying language, used by Google.',
+};
+
 const App: React.FC = () => {
   const [urlInput, setUrlInput] = useState<string>('');
   const [parsedResult, setParsedResult] = useState<ParsedUrlInfo | null>(null);
@@ -31,7 +79,7 @@ const App: React.FC = () => {
         paramsList.push({
           key,
           value,
-          explanation: PARAMETER_EXPLANATIONS[key.toLowerCase()],
+          explanation: parameterDictionary[key.toLowerCase()] || '-',
         });
       });
 
@@ -182,7 +230,7 @@ const App: React.FC = () => {
                                   </button>
                                 </div>
                               </td>
-                              <td className="px-4 py-3 text-sm text-slate-400">{param.explanation || '-'}</td>
+                              <td className="px-4 py-3 text-sm text-slate-400">{param.explanation}</td>
                             </tr>
                           ))}
                         </tbody>
