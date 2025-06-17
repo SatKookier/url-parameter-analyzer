@@ -1,4 +1,3 @@
-
 import React, { useState, useEffect, useCallback } from 'react';
 import { QueryParam, ParsedUrlInfo } from './types';
 import { PARAMETER_EXPLANATIONS } from './constants';
@@ -138,8 +137,6 @@ const App: React.FC = () => {
                     <p><strong>Protocol:</strong> <span className="text-slate-300">{parsedResult.protocol}</span></p>
                     <p><strong>Hostname:</strong> <span className="text-slate-300">{parsedResult.hostname}</span></p>
                     <p><strong>Pathname:</strong> <span className="text-slate-300">{parsedResult.pathname || "/"}</span></p>
-                    {parsedResult.search && <p><strong>Query String:</strong> <span className="text-slate-300 break-all">{parsedResult.search}</span></p>}
-                    {parsedResult.hash && <p><strong>Hash:</strong> <span className="text-slate-300 break-all">{parsedResult.hash}</span></p>}
                   </div>
                 </div>
 
@@ -168,8 +165,8 @@ const App: React.FC = () => {
                         </thead>
                         <tbody className="divide-y divide-slate-700">
                           {parsedResult.params.map((param, index) => (
-                            <tr key={`${param.key}-${index}`} className="hover:bg-slate-700/50 transition-colors">
-                              <td className="px-4 py-3 text-sm text-slate-200 break-all font-medium">{param.key}</td>
+                            <tr key={`${param.key}-${index}`} className={`hover:bg-slate-700/50 transition-colors ${param.key.startsWith('utm_') ? 'bg-slate-700/30' : ''}`}>
+                              <td className="px-4 py-3 text-sm text-slate-200 break-all font-bold">{param.key}</td>
                               <td className="px-4 py-3 text-sm text-slate-300 break-all">
                                 <div className="flex items-center justify-between gap-2">
                                   <span>{param.value}</span>
@@ -185,7 +182,7 @@ const App: React.FC = () => {
                                   </button>
                                 </div>
                               </td>
-                              <td className="px-4 py-3 text-sm text-slate-400">{param.explanation || 'N/A'}</td>
+                              <td className="px-4 py-3 text-sm text-slate-400">{param.explanation || '-'}</td>
                             </tr>
                           ))}
                         </tbody>
