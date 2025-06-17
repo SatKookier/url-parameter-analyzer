@@ -1,4 +1,3 @@
-
 import React from 'react';
 import XMarkIcon from './icons/XMarkIcon';
 
@@ -18,7 +17,7 @@ const Modal: React.FC<ModalProps> = ({ isOpen, onClose, title, children }) => {
       onClick={onClose}
     >
       <div 
-        className="bg-slate-800 p-6 rounded-lg shadow-xl max-w-2xl w-full text-slate-200 relative transform transition-all duration-300 ease-in-out scale-95 opacity-0 animate-modalShow"
+        className="bg-slate-800 p-6 rounded-lg shadow-xl max-w-2xl w-full text-slate-200 relative transform transition-all duration-300 ease-in-out scale-95 animate-modalShow"
         onClick={(e) => e.stopPropagation()} // Prevent click inside from closing modal
       >
         <style>{`
