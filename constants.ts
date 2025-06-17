@@ -1,0 +1,21 @@
+
+export const PARAMETER_EXPLANATIONS: { [key: string]: string } = {
+  utm_source: "The referrer: where the traffic came from (e.g., google, newsletter).",
+  utm_medium: "The marketing medium (e.g., cpc, email, social).",
+  utm_campaign: "The specific product promotion or strategic campaign (e.g., summer_sale).",
+  utm_term: "The keywords used for a paid search campaign.",
+  utm_content: "Used to differentiate ads or links that point to the same URL.",
+  gclid: "Google Click ID: A tracking parameter for Google Ads.",
+  fbclid: "Facebook Click ID: A tracking parameter for Facebook Ads.",
+  msclkid: "Microsoft Click ID: A tracking parameter for Microsoft Advertising.",
+  ref: "A common parameter indicating the referral source.",
+  _ga: "Google Analytics client ID.",
+  _gl: "Google Analytics linker parameter.",
+  cid: "Campaign ID, often used in email marketing.",
+  ID: "Generic identifier, could be session ID, user ID etc.",
+  source: "Indicates the source of traffic, similar to utm_source.",
+  medium: "Indicates the marketing medium, similar to utm_medium.",
+  campaign: "Indicates the campaign name, similar to utm_campaign.",
+  term: "Indicates search term, similar to utm_term.",
+  content: "Indicates specific content, similar to utm_content.",
+};
