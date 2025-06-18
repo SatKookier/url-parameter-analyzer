@@ -23,8 +23,13 @@
     "noFallthroughCasesInSwitch": true,
     "noUncheckedSideEffectImports": true,
 
+    /* Type checking */
+    "types": ["react", "react-dom"],
+
     "paths": {
       "@/*" :  ["./*"]
     }
-  }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
 }

@@ -1,5 +1,5 @@
-import { SpeedInsights } from "@vercel/speed-insights/next"
-import { Analytics } from "@vercel/analytics/next"
+import SpeedInsights from "@vercel/speed-insights"
+import Analytics from "@vercel/analytics"
 import React, { useState, useEffect, useCallback } from 'react';
 import { QueryParam, ParsedUrlInfo } from './types';
 import { PARAMETER_EXPLANATIONS } from './constants';
@@ -121,15 +121,15 @@ const App: React.FC = () => {
         setJsonCopied(true);
         setTimeout(() => setJsonCopied(false), 2000);
       } else {
-        setCopiedStatus(prev => ({ ...prev, [id]: true }));
-        setTimeout(() => setCopiedStatus(prev => ({ ...prev, [id]: false })), 2000);
+        setCopiedStatus((prev: Record<string, boolean>) => ({ ...prev, [id]: true }));
+        setTimeout(() => setCopiedStatus((prev: Record<string, boolean>) => ({ ...prev, [id]: false })), 2000);
       }
     } catch (err) {
       console.error('Failed to copy text: ', err);
       if (isJsonExport) {
          // Optionally show error to user for JSON export
       } else {
-        setCopiedStatus(prev => ({ ...prev, [id]: false })); // Reset if error
+        setCopiedStatus((prev: Record<string, boolean>) => ({ ...prev, [id]: false })); // Reset if error
       }
       alert("Failed to copy to clipboard. Your browser might not support this feature or permissions are denied.");
     }
@@ -137,7 +137,7 @@ const App: React.FC = () => {
 
   const handleExportJson = () => {
     if (!parsedResult || parsedResult.params.length === 0) return;
-    const jsonToExport = parsedResult.params.reduce((acc, param) => {
+    const jsonToExport = parsedResult.params.reduce((acc: Record<string, string>, param: QueryParam) => {
       acc[param.key] = param.value;
       return acc;
     }, {} as Record<string, string>);
@@ -214,7 +214,7 @@ const App: React.FC = () => {
                           </tr>
                         </thead>
                         <tbody className="divide-y divide-slate-700">
-                          {parsedResult.params.map((param, index) => (
+                          {parsedResult.params.map((param: QueryParam, index: number) => (
                             <tr key={`${param.key}-${index}`} className={`hover:bg-slate-700/50 transition-colors ${param.key.startsWith('utm_') ? 'bg-slate-700/30' : ''}`}>
                               <td className="px-4 py-3 text-sm text-slate-200 break-all font-bold">{param.key}</td>
                               <td className="px-4 py-3 text-sm text-slate-300 break-all">
@@ -270,6 +270,10 @@ const App: React.FC = () => {
       <Modal isOpen={showContactModal} onClose={() => setShowContactModal(false)} title="Contact Us">
         <Contact />
       </Modal>
+
+      {/* Vercel Analytics and Speed Insights */}
+      <Analytics />
+      <SpeedInsights />
     </div>
   );
 };
