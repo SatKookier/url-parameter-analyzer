@@ -1,3 +1,4 @@
+import { Analytics } from "@vercel/analytics/next"
 import React, { useState, useEffect, useCallback } from 'react';
 import { QueryParam, ParsedUrlInfo } from './types';
 import { PARAMETER_EXPLANATIONS } from './constants';
