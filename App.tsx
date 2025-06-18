@@ -1,3 +1,4 @@
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import { Analytics } from "@vercel/analytics/next"
 import React, { useState, useEffect, useCallback } from 'react';
 import { QueryParam, ParsedUrlInfo } from './types';
