@@ -1,5 +1,5 @@
-import SpeedInsights from "@vercel/speed-insights"
-import Analytics from "@vercel/analytics"
+import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 import React, { useState, useEffect, useCallback } from 'react';
 import { QueryParam, ParsedUrlInfo } from './types';
 import { PARAMETER_EXPLANATIONS } from './constants';
@@ -271,7 +271,7 @@ const App: React.FC = () => {
         <Contact />
       </Modal>
 
-      {/* Vercel Analytics and Speed Insights */}
+      {/* Vercel Analytics */}
       <Analytics />
       <SpeedInsights />
     </div>
