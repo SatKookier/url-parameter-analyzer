@@ -5,10 +5,6 @@ const PrivacyPolicy: React.FC = () => {
     <div className="space-y-4 text-slate-300">
       <p className="mb-4">We respect your privacy. Below is an explanation of how this service handles your information.</p>
       
-      <section>
-        <h3 className="text-xl font-semibold text-sky-400 mb-2">About Image Data</h3>
-        <p>All background removal processing is completed entirely within your browser (client-side). Uploaded images are never sent to or stored on our servers.</p>
-      </section>
       
       <section>
         <h3 className="text-xl font-semibold text-sky-400 mb-2">About Ads</h3>
